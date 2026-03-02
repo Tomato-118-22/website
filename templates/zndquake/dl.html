@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダウンロード | Zunda Quake</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='zndquake/style.css') }}">
+    <script src="{{ url_for('static', filename='zndquake/script.js') }}" defer></script>
+    <link rel="icon" href="{{ url_for('static', filename='zndquake/icon.png') }}">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="main" class="logo">
+                <!-- SVG Icon Placeholder
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12h5l3 9 4-17 3 8h5" />
+                </svg> -->
+                <img src="icon.png" alt="logo" width="64">
+                Zunda Quake
+            </a>
+            <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
+                ☰
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="main">ホーム</a></li>
+                    <li><a href="about">機能紹介</a></li>
+                    <li><a href="dl" class="active">ダウンロード</a></li>
+                    <li><a href="faq">FAQ</a></li>
+                    <li><a href="contact">お問い合わせ</a></li>
+                    <li><a class="menu-button" onclick="toggleMenu()">Language</a></li>
+                </ul>
+                <div class="menu" id="menu">
+                  <a href="main" class="menu-item">日本語</a>
+                  <a href="main_en" class="menu-item">English</a>
+                  <a href="main_zh" class="menu-item">中文(繁體)</a>
+                  <a href="main_kr" class="menu-item">한국어</a>
+                  <a href="main_es" class="menu-item">Español(Sudamerica)</a>
+                  <a href="main_ai" class="menu-item">Aynu itak(Aynumosir)</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section hero" style="padding: 3rem 0; background: var(--bg-color);">
+            <div class="container text-center">
+                <h1>ダウンロード</h1>
+                <p>お使いのOSに合わせてダウンロードしてください。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <!-- Beta Warning -->
+                <div
+                    style="background-color: #FFF3E0; border-left: 5px solid #FF9800; padding: 1.5rem; margin-bottom: 3rem; border-radius: 4px;">
+                    <h3 style="margin-top: 0; color: #E65100;">⚠️ ベータ版のご利用について</h3>
+                    <p style="margin-bottom: 0; color: #5D4037;">
+                        現在公開しているバージョンは開発中の物となります。誤情報の受信や、予期せぬ不具合が発生する可能性があります。必ず他の情報源と併用してください。
+                    </p>
+                </div>
+
+                <!-- OS Selection -->
+                <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                    <!-- Windows -->
+                    <div class="card text-center">
+                        <!--<div style="font-size: 3rem; margin-bottom: 1rem; color: #0078D6;">❖</div>-->
+                        <h3>For Windows</h3>
+                        <p>Windows 10 / 11 対応 (64bit)</p>
+                        <a href="zundaquakeinstaller_beta1.0.0.exe" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">ダウンロード
+                            (β1.0.0)</a>
+                    </div>
+
+                    <!-- Mac -->
+                    <div class="card text-center">
+                        <!--<div style="font-size: 3rem; margin-bottom: 1rem; color: #555;"></div>-->
+                        <h3>For macOS</h3>
+                        <p>macOS 12.0 Monterey 以降 (Intel/Apple Silicon)</p>
+                        <a href="zundaquakeinstaller_beta1.0.0.app" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">ダウンロード
+                            (β1.0.0)</a>
+                    </div>
+
+                    <!-- Linux -->
+                    <div class="card text-center">
+                        <!--<div style="font-size: 3rem; margin-bottom: 1rem; color: #FCC624;">🐧</div>-->
+                        <h3>For Linux</h3>
+                        <p>Ubuntu 22.04 / Debian 11 以降</p>
+                        <a href="zundaquakeinstaller_beta1.0.0.run" class="btn btn-outline" style="width: 100%; margin-top: 1rem;">ダウンロード (β1.0.0)</a>
+                    </div>
+                </div>
+
+                <!-- Version List (Commented out as requested) -->
+                <!-- 
+                <div style="margin-top: 4rem;">
+                    <h2>バージョン履歴</h2>
+                    <ul style="list-style: none;">
+                        <li style="border-bottom: 1px solid #ccc; padding: 1rem 0;">
+                            <strong>Beta 1.0.0</strong> (2026-03-11): β版リリース
+                        </li>
+                    </ul>
+                </div> 
+                -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p style="margin-top: 20px">安心を、もっと身近に。</p>
+                    <img src="{{ url_for('static', filename='zndquake/logo.png') }}" alt="ZundaQuake" width="512">
+                </div>
+                <div>
+                    <h3>リンク</h3>
+                    <ul>
+                        <li><a href="main">ホーム</a></li>
+                        <li><a href="about">機能紹介</a></li>
+                        <li><a href="dl">ダウンロード</a></li>
+                        <li><a href="faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Tomato. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

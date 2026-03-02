@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Zunda Quake | Zunda Quake</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="main.html" class="logo">
+                <!-- SVG Icon Placeholder
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12h5l3 9 4-17 3 8h5" />
+                </svg> -->
+                <img src="icon.png" alt="logo" width="64">
+                Zunda Quake
+            </a>
+            <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
+                ☰
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="main_en.html">Home</a></li>
+                    <li><a href="about_en.html" class="active">Feature Introduction</a></li>
+                    <li><a href="dl_en.html">Download</a></li>
+                    <li><a href="faq_en.html">FAQ</a></li>
+                    <li><a href="contact_en.html">Contact Us</a></li>
+                    <li><a class="menu-button" onclick="toggleMenu()">Language</a></li>
+                </ul>
+                <div class="menu" id="menu">
+                  <a href="main.html" class="menu-item">日本語</a>
+                  <a href="main_en.html" class="menu-item">English</a>
+                  <a href="main_zh.html" class="menu-item">中文(繁體)</a>
+                  <a href="main_kr.html" class="menu-item">한국어</a>
+                  <a href="main_es.html" class="menu-item">Español(Sudamerica)</a>
+                  <a href="main_ai.html" class="menu-item">Aynu itak(Aynumosir)</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    <main>
+        <section class="section hero" style="padding: 3rem 0; background: var(--bg-color);">
+            <div class="container text-center">
+                <h1>About ZundaQuake</h1>
+                <p>It will deliver earthquake information to you faster and more clearly.</p>
+            </div>
+        </section>
+
+        <!-- Detailed Features -->
+        <section class="section">
+            <div class="container">
+                <div
+                    style="background-color: #FFF3E0; border-left: 5px solid #FF9800; padding: 1.5rem; margin-bottom: 3rem; border-radius: 4px;">
+                    <h3 style="margin-top: 0; color: #E65100;">⚠️ About using the beta version</h3>
+                    <p style="margin-bottom: 0; color: #5D4037;">
+                        The version currently available is under development. Not all features listed on this page are available for use.
+                    </p>
+                </div>
+                <h2>Feature Introduction</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>P-wave and S-wave arrival prediction</h3>
+                        <p>Based on the Japan Meteorological Agency's Earthquake Early Warnings, it displays a real-time countdown of the predicted arrival times for the P-wave (initial tremors) and S-wave (main tremors) at your current location.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Detailed seismic intensity map</h3>
+                        <p>Displays not only the epicentre but also the predicted seismic intensity for each region colour-coded on a map. This allows you to intuitively grasp the spread of shaking.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Disaster Information</h3>
+                        <p>Displays and alerts you to not only earthquakes and tsunamis, but also volcanic eruption information and localised weather warnings. This helps raise your awareness of disaster prevention on a daily basis.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Overseas Earthquake Information</h3>
+                        <p>Receives earthquake information not only from Japan, but also from South Korea, the Republic of China (Taiwan), Chile, and Mexico. You can quickly obtain earthquake information from around the world.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Voice Read-Aloud Function</h3>
+                        <p>Notifies you of earthquake occurrence information via synthetic voice. You can obtain information even when you cannot see the screen.</p>
+                    </div>
+                    <div class="card">
+                        <h3>History Display</h3>
+                        <p>Review the history of past earthquakes. Detailed data allows for retrospective analysis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Software -->
+        <section class="section" style="background-color: var(--white);">
+            <div class="container">
+                <h2>About this software</h2>
+                <div style="max-width: 800px;">
+                    <h3>Origin of the name</h3>
+                    <p>The name derives from &quot;zunda&quot; (from the local dish zunda mochi) and &quot;quake&quot; (meaning earthquake), taken from the Tohoku Region Pacific Coast Earthquake(Great East Japan Earthquake) that struck the Tohoku region on 11 March 2011(JST). It was named with the intention of not forgetting the lessons of the Great East Japan Earthquake and raising awareness of disaster prevention.
+                    </p>
+                    <h3>Development background</h3>
+                    <p>The beta release date of 11 March 2026 marks the 15th anniversary of the Great East Japan Earthquake. Developed to prevent such tragedies from recurring, ZundaQuake aims to be both high-performance and lightweight, while remaining simple for anyone to use.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Team -->
+        <section class="section">
+            <div class="container">
+                <h2>Development Team</h2>
+                <ul style="margin-top: 1rem; list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>Lead Developer:</strong>Tomato(Office Z Development Team)</li>
+                    <li><strong>Design:</strong> Tomato, ChatGPT, Gemini, Claude</li>
+                    <li><strong>QA:</strong> Community Testers</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Technical Info -->
+        <section class="section" style="background-color: var(--white);">
+            <div class="container">
+                <h2>Technical Information</h2>
+                <div style="display: grid; gap: 1rem; max-width: 800px;">
+                    <div>
+                        <strong>Programming Language:</strong> Python 3.13
+                    </div>
+                    <div>
+                        <strong>GUI Framework:</strong> PyQt6
+                    </div>
+                    <div>
+                        <strong>Source Information:</strong>
+                        <ul style="margin-top: 0.5rem; list-style: circle; padding-left: 1.5rem;">
+                            <li>P2P Quake API<sup class="ref"><a class="#ref1">※1</a><span class="ref-popup">See <a href="https://www.p2pquake.net/develop/json_api_v2/">here</a>.</span></sup></li>
+                            <!-- <li>気象庁 防災情報XML (DM-DSS)</li> -->
+                            <li>Wolfx API<sup class="ref"><a class="#ref2">※2</a><span class="ref-popup">See <a href="https://wolfx.jp/apidoc">here</a>.</span></sup></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>Images:</strong> MapChart<sup class="ref"><a class="#ref3">※3</a><span class="ref-popup">Japan used. Some additions made.</span></sup>
+                    </div>
+                    <div>
+                        <strong>Sound/Voice:</strong> MuseScore4, VOICEVOX<sup class="ref"><a class="#ref4">※4</a><span class="ref-popup">Used for Japanese text-to-speech. Voice libraries: Kiritan Tohoku for Earthquake Information, Itako Tohoku for EEW(Warning) Information, Zunko Tohoku for Tsunami Information, Metan Shikoku and Zundamon for other meteorological Informaition. These voice libraries based baced on characters from Zunko Tohoku and Zundamon Project, a reconstruction support initiative following the Tohoku Region Pacific Coast Earthquake. They align with ZundaQuake's philosophy and are therefore used for text-to-speech. For details, see <a href="https://zunko.jp/">here</a>.</span></sup>, Typecast<sup class="ref"><a class="#ref5">※5</a><span class="ref-popup">Used for English and Korean text-to-speech. Voice libraries: For details, see <a href="https://typecast.ai/">here</a>.</span></sup>, A.I.VOICE<sup class="ref"><a class="#ref6">※6</a><span class="ref-popup">Used for Chinese text-to-speech. Voice library: Akane Kotonoha Chinese. For details, see <a href="https://aivoice.jp/product/kotonohatalk_ja/">here</a>.</span></sup>, Ondoku3<sup class="ref"><a class="#ref7">※7</a><span class="ref-popup">Used for Spanish text-to-speech. Voice library: For details, see <a href="https://ondoku3.com/ja/">here</a>.</span></sup>
+                    </div>
+                    <div>
+                        <strong>Supported OS:</strong> Windows 10/11, macOS, Linux (Ubuntu/Raspberry Pi)
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p style="margin-top: 20px">Peace of mind, closer to you.</p>
+                    <img src="logo.png" alt="ZundaQuake" width="512">
+                </div>
+                <div>
+                    <h3>Link</h3>
+                    <ul>
+                        <li><a href="main.html">Home</a></li>
+                        <li><a href="about.html">Feature Introduction</a></li>
+                        <li><a href="dl.html">Download</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Tomato. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

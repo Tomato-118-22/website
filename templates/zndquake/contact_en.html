@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ | Zunda Quake</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <style>
+        details {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        details[open] {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        summary {
+            font-weight: bold;
+            font-size: 1.1rem;
+            outline: none;
+            list-style: none;
+            /* Remove default triangle */
+            position: relative;
+            padding-right: 2rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        details p {
+            margin-top: 1rem;
+            margin-bottom: 0;
+            color: #555;
+            padding-top: 1rem;
+            border-top: 1px dashed #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="main.html" class="logo">
+                <!-- SVG Icon Placeholder
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12h5l3 9 4-17 3 8h5" />
+                </svg> -->
+                <img src="icon.png" alt="logo" width="64">
+                Zunda Quake
+            </a>
+            <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
+                ☰
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="main.html">ホーム</a></li>
+                    <li><a href="about.html">機能紹介</a></li>
+                    <li><a href="dl.html">ダウンロード</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html" class="active">お問い合わせ</a></li>
+                    <li><a class="menu-button" onclick="toggleMenu()">Language</a></li>
+                </ul>
+                <div class="menu" id="menu">
+                  <a href="about.html" class="menu-item">日本語</a>
+                  <a href="about_en.html" class="menu-item">English</a>
+                  <a href="about_zh.html" class="menu-item">中文(繁體)</a>
+                  <a href="about_kr.html" class="menu-item">한국어</a>
+                  <a href="about_es.html" class="menu-item">Español(Sudamerica)</a>
+                  <a href="about_ai.html" class="menu-item">Aynu itak(Aynumosir)</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section hero" style="padding: 3rem 0; background: var(--bg-color);">
+            <div class="container text-center">
+                <h1>お問い合わせ</h1>
+                <p>バグ報告や機能要望は、以下のフォームまたはメールアドレスからお寄せください。</p>
+            </div>
+        </section>
+
+        <section class="section" style="max-width: 800px; margin: 0 auto; padding-left: 1rem; padding-right: 1rem;">
+            <h2>フォーム</h2>
+
+            <div id="questant-embed-1814380" data-type="0" data-width="800" data-height="600"><script type="text/javascript" src="https://questant.jp/q/e.js?q=0G5H7LE0&d=0"></script></div>
+
+            <h2 style="margin-top: 3rem;">メールアドレス</h2>
+
+            <!-- Placeholder for Contact Form -->
+            <div class="card" style="max-width: 600px; margin: 2rem auto; text-align: center;">
+                <!-- <p>現在、お問い合わせフォームは準備中です。</p>
+                <div id="questant-embed-1814380" data-type="0" data-width="500" data-height="600"><script type="text/javascript" src="https://questant.jp/q/e.js?q=0G5H7LE0&d=0"></script></div> -->
+                <p>緊急のご連絡は <a href="mailto:tomato_118_22@naver.com">tomato_118_22@naver.com</a> までお願いいたします。</p>
+            </div>
+
+            <h2 style="margin-top: 3rem;">その他</h2>
+
+            <!-- Placeholder for Contact Form -->
+            <div class="card" style="max-width: 600px; margin: 2rem auto; text-align: center;">
+                <p>ZundaQuakeの開発、デバッグを手伝ってくださる方を募集しています。詳しくは <a href="https://discord.gg/32KY8XXgCT">開発チームDiscordサーバー</a> をご確認ください。</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p style="margin-top: 20px">安心を、もっと身近に。</p>
+                    <img src="logo.png" alt="ZundaQuake" width="512">
+                </div>
+                <div>
+                    <h3>リンク</h3>
+                    <ul>
+                        <li><a href="main.html">ホーム</a></li>
+                        <li><a href="about.html">機能紹介</a></li>
+                        <li><a href="dl.html">ダウンロード</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Tomato. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

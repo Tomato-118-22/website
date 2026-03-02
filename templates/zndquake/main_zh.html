@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zunda Quake - 迅速かつ正確な地震･津波情報受信ソフトウェア。シンプルでモダンなインターフェースで防災をサポートします。">
+    <title>Zunda Quake | 地震海嘯信息接收軟體</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='zndquake/style.css') }}">
+    <script src="{{ url_for('static', filename='zndquake/script.js') }}" defer></script>
+    <link rel="icon" href="{{ url_for('static', filename='zndquake/icon.png') }}">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="main_zh" class="logo">
+                <!-- SVG Icon Placeholder
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12h5l3 9 4-17 3 8h5" />
+                </svg> -->
+                <img src="{{ url_for('static', filename='zndquake/icon.png') }}" alt="logo" width="64">
+                Zunda Quake
+            </a>
+            <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
+                ☰
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="main_zh" class="active">主畫面</a></li>
+                    <li><a href="about_zh">功能介紹</a></li>
+                    <li><a href="dl_zh">下載</a></li>
+                    <li><a href="faq_zh">提問</a></li>
+                    <li><a href="contact_zh">諮詢</a></li>
+                    <li><a class="toggleBtn" id="toggleBtn">转换为简体字</a></li>
+                    <script src="{{ url_for('static', filename='zndquake/hanzi_conv.js') }}"></script>
+                    <li><a class="menu-button" onclick="toggleMenu()">Language</a></li>
+                </ul>
+                <div class="menu" id="menu">
+                  <a href="main" class="menu-item">日本語</a>
+                  <a href="main_en" class="menu-item">English</a>
+                  <a href="main_zh" class="menu-item">中文(繁體)</a>
+                  <a href="main_kr" class="menu-item">한국어</a>
+                  <a href="main_es" class="menu-item">Español(Sudamerica)</a>
+                  <a href="main_ai" class="menu-item">Aynu itak(Aynumosir)</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>讓震動被看見，<br>全新的防災體驗。</h1>
+                <p data-convert>「Zunda Quake(豆打地震)」是實時接收日本、世界<sup>※1</sup>的地震、海嘯等防災信息，在畫面上顯示、通過聲音進行通知的軟體。</p>
+                <a href="dl_zh" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    免費下載 (Beta版)
+                </a>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="text-center">告示</h2>
+                <div class="news-list">
+                    <article class="news-item">
+                        <span class="news-date">2026.03.11</span>
+                        <span class="news-content">網站公開了。</span>
+                    </article>
+                    <article class="news-item">
+                        <span class="news-date">2026.03.11</span>
+                        <span class="news-content">Zunda Quake β1.0.0 公開了。</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section (Simplified) -->
+        <section class="section" style="background-color: var(--white);">
+            <div class="container">
+                <h2 class="text-center">主要功能</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>實時通知</h3>
+                        <p>幾乎可以毫無延遲地接收緊急地震速報或海嘯信息，並立即在畫面上顯示，通過語音告知。</p>
+                    </div>
+                    <div class="card">
+                        <h3>時尚的UI</h3>
+                        <p>追求視覺效果的綠色基調的簡單設計。在暗處也適合眼睛的配色。</p>
+                    </div>
+                    <div class="card">
+                        <h3>多平臺</h3>
+                        <p>支持Windows、Mac、Linux<sup>※2</sup>，無論您的環境如何運行。</p>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 2rem;">
+                    <a href="about_zh" class="btn btn-outline">查看功能詳細信息 &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Teaser -->
+        <section class="section">
+            <div class="container text-center">
+                <h2>常見問題</h2>
+                <p>有沒有不知道使用方法、不動等故障?</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="faq_zh" class="btn btn-outline">確認</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section" style="background-color: var(--white);">
+            <div class="container">
+                <h2 class="text-center">諮詢</h2>
+                <p class="text-center">請通過以下表格或電子郵件地址發送錯誤報告和功能要求。</p>
+                <!-- Placeholder for Contact Form -->
+                <div class="card" style="max-width: 600px; margin: 2rem auto; text-align: center;">
+                    <!-- <p>現在、お問い合わせフォームは準備中です。</p>
+                    <div id="questant-embed-1814380" data-type="0" data-width="500" data-height="600"><script type="text/javascript" src="https://questant.jp/q/e.js?q=0G5H7LE0&d=0"></script></div> -->
+                    <div style="margin-top: 1.5rem;">
+                        <a href="contact_zh" class="btn btn-outline">詢問</a>
+                    </div>
+                    <p>緊急聯繫請 <a href="mailto:tomato_118_22@naver.com">tomato_118_22@naver.com</a> 。</p>
+                </div>
+            </div>
+        </section>
+        <section>
+        	<div class="container">
+        		<p class="text-center">※1 現在正在開發中。 ※2 在Windows10以後的OS中運行。 在macOS X Mojave以上運行。 通過Ubuntu、Raspberry Pi運行。</p>
+        	</div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p style="margin-top: 20px">讓安心，更貼近你。</p>
+                    <img src="{{ url_for('static', filename='zndquake/logo.png') }}" alt="ZundaQuake" width="512">
+                </div>
+                <div>
+                    <h3>連結</h3>
+                    <ul>
+                        <li><a href="main_zh">主畫面</a></li>
+                        <li><a href="about_zh">功能介紹</a></li>
+                        <li><a href="dl_zh">下載</a></li>
+                        <li><a href="faq_zh">提問</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Tomato. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

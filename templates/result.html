@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="/static/logo.jpg">
+    <title>{{ query }} の検索結果 | トマト</title>
+    <style>
+        .search-header {
+            background-color: var(--color-bg-alt);
+            padding: var(--spacing-md) 0;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .search-bar-mini {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: var(--spacing-sm);
+            padding: 0 var(--spacing-md);
+        }
+
+        .search-bar-mini input {
+            flex: 1;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            font-family: var(--font-family);
+        }
+
+        .result-item {
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--spacing-md) 0;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-type {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-bottom: var(--spacing-xs);
+            font-weight: bold;
+        }
+
+        .type-article {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .type-video {
+            background-color: #fce4ec;
+            color: #c2185b;
+        }
+
+        .result-id {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search-header">
+        <div class="search-bar-mini">
+            <form action="/search/result" method="get"
+                style="display: flex; flex-direction: column; width: 100%; gap: var(--spacing-sm);">
+                <div style="display: flex; gap: var(--spacing-sm);">
+                    <input type="text" name="q" value="{{ query }}" placeholder="再検索...">
+                    <button type="submit" class="btn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            style="vertical-align: middle;">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg></button>
+                </div>
+                <div
+                    style="display: flex; gap: var(--spacing-sm); flex-wrap: wrap; font-size: 0.85rem; align-items: center;">
+                    <input type="date" name="start_date" value="{{ start_date }}" style="width: auto; padding: 4px;">
+                    <span>〜</span>
+                    <input type="date" name="end_date" value="{{ end_date }}" style="width: auto; padding: 4px;">
+                    <select name="type" style="padding: 4px;">
+                        <option value="all" {% if type=='all' %}selected{% endif %}>すべて</option>
+                        <option value="article" {% if type=='article' %}selected{% endif %}>記事のみ</option>
+                        <option value="video" {% if type=='video' %}selected{% endif %}>動画のみ</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="centre">
+        <div class="black">
+            <h1>検索結果: 「{{ query }}」</h1>
+        </div>
+
+        <section class="mt-lg">
+            {% if results %}
+            <p>{{ results|length }} 件見つかりました</p>
+            <div class="results-list">
+                {% for item in results %}
+                <div class="result-item">
+                    <span class="result-type type-{{ item.type }}">
+                        {% if item.type == 'article' %}記事{% else %}動画{% endif %}
+                    </span>
+                    <span class="result-id">ID: {{ item.id }}</span>
+                    <h3 style="margin: var(--spacing-xs) 0;">
+                        <a href="{{ item.url }}">{{ item.title }}</a>
+                    </h3>
+                    <div class="badge-container">
+                        {% if item.categories %}
+                        {% for cat in item.categories %}
+                        <span class="badge badge-category" style="font-size: 0.7rem; padding: 1px 8px;">{{ cat }}</span>
+                        {% endfor %}
+                        {% endif %}
+                        {% if item.tags %}
+                        {% for tag in item.tags %}
+                        <span class="badge badge-tag" style="font-size: 0.7rem; padding: 1px 8px;">#{{ tag }}</span>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--color-text-muted);">
+                        {{ item.preview }}...
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>「{{ query }}」に一致する結果は見つかりませんでした。</p>
+            {% endif %}
+
+            <div style="margin-top: var(--spacing-lg); text-align: center;">
+                <a href="/" class="btn">トップに戻る</a>
+            </div>
+        </section>
+    </div>
+
+    <footer class="right">
+        <p class="black">Copylight© 2024-2026 Tomato All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

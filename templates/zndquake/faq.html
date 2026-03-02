@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ (よくある質問) | Zunda Quake</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='zndquake/style.css') }}">
+    <script src="{{ url_for('static', filename='zndquake/script.js') }}" defer></script>
+    <link rel="icon" href="{{ url_for('static', filename='zndquake/icon.png') }}">
+    <style>
+        details {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        details[open] {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        summary {
+            font-weight: bold;
+            font-size: 1.1rem;
+            outline: none;
+            list-style: none;
+            /* Remove default triangle */
+            position: relative;
+            padding-right: 2rem;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+            top: 0;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        details p {
+            margin-top: 1rem;
+            margin-bottom: 0;
+            color: #555;
+            padding-top: 1rem;
+            border-top: 1px dashed #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="main" class="logo">
+                <!-- SVG Icon Placeholder
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12h5l3 9 4-17 3 8h5" />
+                </svg> -->
+                <img src="icon.png" alt="logo" width="64">
+                Zunda Quake
+            </a>
+            <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
+                ☰
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="main">ホーム</a></li>
+                    <li><a href="about">機能紹介</a></li>
+                    <li><a href="dl">ダウンロード</a></li>
+                    <li><a href="faq" class="active">FAQ</a></li>
+                    <li><a href="contact">お問い合わせ</a></li>
+                    <li><a class="menu-button" onclick="toggleMenu()">Language</a></li>
+                </ul>
+                <div class="menu" id="menu">
+                  <a href="main" class="menu-item">日本語</a>
+                  <a href="main_en" class="menu-item">English</a>
+                  <a href="main_zh" class="menu-item">中文(繁體)</a>
+                  <a href="main_kr" class="menu-item">한국어</a>
+                  <a href="main_es" class="menu-item">Español(Sudamerica)</a>
+                  <a href="main_ai" class="menu-item">Aynu itak(Aynumosir)</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section hero" style="padding: 3rem 0; background: var(--bg-color);">
+            <div class="container text-center">
+                <h1>よくある質問</h1>
+                <p>使い方がわからない、動かないといったトラブルはありませんか?</p>
+            </div>
+        </section>
+
+        <section class="section" style="max-width: 800px; margin: 0 auto; padding-left: 1rem; padding-right: 1rem;">
+            <h2>インストール･起動</h2>
+
+            <details>
+                <summary>インストール方法を教えてください。</summary>
+                <p>ダウンロードページからお使いのOSに合ったインストーラーをダウンロードし、実行してください。Windowsの場合はEXEファイル、Macの場合はDMGファイルがダウンロードされます。</p>
+            </details>
+
+            <details>
+                <summary>ソフトが起動しません。</summary>
+                <p>お使いのPCの性能やセキュリティソフトの影響が考えられます。一度セキュリティソフトを一時停止してから起動をお試しください。また、Windowsの場合は「管理者として実行」を試すと改善する事があります。
+                </p>
+            </details>
+
+            <h2 style="margin-top: 3rem;">機能･設定</h2>
+
+            <details>
+                <summary>通知音は変更できますか?</summary>
+                <p>はい。起動ファイルが格納されているフォルダの「sound」フォルダに通知音が入っていますので、標準の通知音を削除し、お客様が用意したMP3やWAVファイルをコピー、ファイル名を変更させる事で変更が可能です。</p>
+            </details>
+
+            <details>
+                <summary>地図が表示されません。</summary>
+                <p>「元に戻す」ボタンを押し、地図表示を既定の位置に直してください。それでも直らなかった場合は、再度起動してください。</p>
+            </details>
+
+            <h2 style="margin-top: 3rem;">その他</h2>
+
+            <details>
+                <summary>無料で使えますか?</summary>
+                <p>はい、ZundaQuakeは完全無料･広告･追加料金なしで提供しており、すべての機能を無料でご利用いただけます。</p>
+            </details>
+
+            <details>
+                <summary>ソースコードは公開されていますか?</summary>
+                <p>いいえ、今後公開する可能性はありますが、現在クローズドソースとなっています。</p>
+            </details>
+        </section>
+
+        <section class="section text-center">
+            <div class="container">
+                <p>解決しない場合は、お問い合わせフォームよりご相談ください。</p>
+                <a href="contact" class="btn btn-outline" style="margin-top: 1rem;">お問い合わせ</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p style="margin-top: 20px">安心を、もっと身近に。</p>
+                    <img src="{{ url_for('static', filename='zndquake/logo.png') }}" alt="ZundaQuake" width="512">
+                </div>
+                <div>
+                    <h3>リンク</h3>
+                    <ul>
+                        <li><a href="main">ホーム</a></li>
+                        <li><a href="about">機能紹介</a></li>
+                        <li><a href="dl">ダウンロード</a></li>
+                        <li><a href="faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Tomato. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

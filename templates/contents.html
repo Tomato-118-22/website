@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--Copylight© Tomato All rights reserved.-->
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="トマトが提供するコンテンツの一覧です。">
+    <meta property="og:image" content="logo.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="logo.jpg">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <title>コンテンツ一覧 | トマト</title>
+</head>
+
+<body>
+    <div class="centre">
+        <div class="black">
+            <h1>トマト</h1>
+        </div>
+
+        <div class="white">
+            <table class="back-gray" align="center" border="0" width="800">
+                <tr>
+                    <td width="30">
+                </tr>
+                <tr>
+                    <td>
+                        <a href="/">
+                            <p>トップ</p>
+                        </a>
+                    </td>
+                    <td width="30">
+                        <a href="about">
+                            <p>プロフィール</p>
+                        </a>
+                    </td>
+                    <td width="30">
+                        <a href="contents">
+                            <p>コンテンツ一覧</p>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30">
+                        <a href="search">
+                            <p>コンテンツを探す</p>
+                        </a>
+                    </td>
+                    <td width="30">
+                        <a href="sns">
+                            <p>SNS</p>
+                        </a>
+                    </td>
+                    <td width="30">
+                        <a href="contact">
+                            <p>連絡先</p>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30">
+                        <a href="terms">
+                            <p>利用規約</p>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="language-section">
+            <div class="language-wrapper">
+                <p class="menu-button" onclick="toggleMenu()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                    </svg>
+                    Language
+                </p>
+                <div class="menu" id="menu">
+                    <a href="../contents" class="menu-item">日本語</a>
+                    <a href="../uk/contents" class="menu-item">English(UK)</a>
+                    <a href="../us/contents" class="menu-item">English(US)</a>
+                    <a href="../kr/contents" class="menu-item">한국어(한국)</a>
+                    <a href="../kp/contents" class="menu-item">문화어(조선)</a>
+                    <a href="../zh-dl/contents" class="menu-item">中文(繫體)</a>
+                    <a href="../zh-tw/contents" class="menu-item">中文(简体)</a>
+                    <a href="../es/contents" class="menu-item">Español(España)</a>
+                    <a href="../de/contents" class="menu-item">Deutsch(Deutschland)</a>
+                    <a href="../sv/contents" class="menu-item">Svenska(Sverige)</a>
+                    <a href="../ai/contents" class="menu-item">Aynu itak(Aynu mosir)</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="mt-lg">
+            <h3>コンテンツカテゴリー</h3>
+            <p class="mb-lg">様々なコンテンツを提供しています</p>
+
+            <ul class="content-list">
+                <li>
+                    <a href="video">
+                        <strong>一般動画</strong>
+                        <span
+                            style="display: block; font-size: 14px; color: var(--color-text-light); margin-top: 8px;">YouTube･ニコニコ動画で公開している動画コンテンツ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="material">
+                        <strong>素材</strong>
+                        <span
+                            style="display: block; font-size: 14px; color: var(--color-text-light); margin-top: 8px;">動画制作や創作活動に使えるBB･GB素材、音声素材等</span>
+                    </a>
+                </li><!--
+                <li>
+                    <a href="distribution">
+                        <strong>配布動画・音声</strong>
+                        <span
+                            style="display: block; font-size: 14px; color: var(--color-text-light); margin-top: 8px;">ダウンロード可能な動画・音声ファイル</span>
+                    </a>
+                </li>-->
+                <li>
+                    <a href="software">
+                        <strong>配布ソフト</strong>
+                        <span
+                            style="display: block; font-size: 14px; color: var(--color-text-light); margin-top: 8px;">自作のソフトウェアやツール</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="game">
+                        <strong>トマトゲーム</strong>
+                        <span
+                            style="display: block; font-size: 14px; color: var(--color-text-light); margin-top: 8px;">オリジナルのゲームコンテンツ</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <footer class="right">
+        <p class="black">Copylight© 2024-2026 Tomato All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="/static/logo.jpg">
+    <title>記事一覧 | トマト</title>
+</head>
+
+<body>
+    <div class="centre">
+        <div class="black">
+            <h1>トマト</h1>
+        </div>
+
+        <nav style="margin: var(--spacing-md) 0; display: flex; justify-content: space-between; align-items: center;">
+            <a href="/" class="btn btn-outline">< トップに戻る</a>
+            {% if session.get('authenticated') %}
+            <a href="/create" class="btn">新規記事作成</a>
+            {% endif %}
+        </nav>
+
+        <section class="mt-lg">
+            <h3>すべての記事</h3>
+
+            {% if articles %}
+            <div class="article-grid">
+                {% for article in articles | reverse %}
+                <div class="article-card">
+                    {% if article['image_name'] %}
+                    <img src="/uploads/{{ article['image_name'] }}" alt="{{ article['title'] }}">
+                    {% endif %}
+                    <div class="article-card-content">
+                        <h3>{{ article['title'] }}</h3>
+                        <div class="badge-container">
+                            {% if article['categories'] %}
+                            {% for cat in article['categories'] %}
+                            <span class="badge badge-category" style="font-size: 0.7rem; padding: 1px 8px;">{{ cat
+                                }}</span>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                        <time>
+                            {{ article['time'] }}
+                            {% if article['updated_time'] %}
+                            <span style="font-size: 0.9em; margin-left: var(--spacing-sm);">(編集済み: {{
+                                article['updated_time'] }})</span>
+                            {% endif %}
+                        </time>
+                        <p>{{ article['preview'] }}...</p>
+                        <a href="/articles/{{ article['article_id'] }}" class="btn">続きを読む</a>
+
+                        {% if session.get('authenticated') %}
+                        <div style="margin-top: var(--spacing-sm); display: flex; gap: var(--spacing-sm);">
+                            <a href="/edit/{{ article['article_id'] }}" class="btn btn-outline"
+                                style="padding: 4px 12px; font-size: 0.9em;">編集</a>
+                            <form action="/delete/{{ article['article_id'] }}" method="post" style="display: inline;"
+                                onsubmit="return confirm('本当に削除しますか？');">
+                                <button type="submit" class="btn btn-outline"
+                                    style="padding: 4px 12px; font-size: 0.9em; border-color: #e74c3c; color: #e74c3c;">                                    削除</button>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p style="color: var(--color-text-light); text-align: center; padding: var(--spacing-xl);">記事はまだ投稿されていません
+            </p>
+            {% endif %}
+        </section>
+    </div>
+
+    <footer class="right">
+        <p class="black">Copylight© 2024-2026 Tomato All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

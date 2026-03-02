@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zunda Quake - 迅速かつ正確な地震･津波情報受信ソフトウェア。シンプルでモダンなインターフェースで防災をサポートします。">
+    <title>Zunda Quake | Earthquake/Tsunami Information Receiving Software</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='zndquake/style.css') }}">
+    <script src="{{ url_for('static', filename='zndquake/script.js') }}" defer></script>
+    <link rel="icon" href="{{ url_for('static', filename='zndquake/icon.png') }}">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <!-- SVG Icon Placeholder
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12h5l3 9 4-17 3 8h5" />
+                </svg> -->
+                <img src="{{ url_for('static', filename='zndquake/icon.png') }}" alt="logo" width="64">
+                Zunda Quake
+            </a>
+            <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
+                ☰
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="main_en" class="active">Home</a></li>
+                    <li><a href="about_en">Feature Introduction</a></li>
+                    <li><a href="dl_en">Download</a></li>
+                    <li><a href="faq_en">FAQ</a></li>
+                    <li><a href="contact_en">Contact Us</a></li>
+                    <li><a class="menu-button" onclick="toggleMenu()">Language</a></li>
+                </ul>
+                <div class="menu" id="menu">
+                  <a href="#" class="menu-item">日本語</a>
+                  <a href="main_en" class="menu-item">English</a>
+                  <a href="main_zh" class="menu-item">中文(繁體)</a>
+                  <a href="main_kr" class="menu-item">한국어</a>
+                  <a href="main_es" class="menu-item">Español(Sudamerica)</a>
+                  <a href="main_ai" class="menu-item">Aynu itak(Aynumosir)</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>A new disaster prevention experience<br>that visualises shaking.</h1>
+                <p>"Zunda Quake" is a software that receives disaster prevention information such as earthquakes and tsunamis in Japan and the world,<sup>*1</sup> in real time, and notifies you by display and voice on the screen.</p>
+                <a href="dl" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Free Download (Beta)
+                </a>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="text-center">Notice</h2>
+                <div class="news-list">
+                    <article class="news-item">
+                        <span class="news-date">2026.03.11</span>
+                        <span class="news-content">The website has been published.</span>
+                    </article>
+                    <article class="news-item">
+                        <span class="news-date">2026.03.11</span>
+                        <span class="news-content">Zunda Quake β1.0.0 has been published.</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section (Simplified) -->
+        <section class="section" style="background-color: var(--white);">
+            <div class="container">
+                <h2 class="text-center">Key Features</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Real-Time Notification</h3>
+                        <p>Receive the Earthquake Early Warning and tsunami information almost without delay, and immediately display it on the screen and notify you by voice.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Modern UI</h3>
+                        <p>A simple design with a green tone for easy viewing. It is a colour scheme that is gentle to the eyes even in the dark.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Multi-Platform</h3>
+                        <p>Support for Windows, Mac, and Linux<sup>*2</sup>, so it works regardless of your environment.</p>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 2rem;">
+                    <a href="about" class="btn btn-outline">View Feature Details &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Teaser -->
+        <section class="section">
+            <div class="container text-center">
+                <h2>Frequently Asked Questions</h2>
+                <p>Do you have any trouble not knowing how to use it or not moving?</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="faq" class="btn btn-outline">View FAQs</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section" style="background-color: var(--white);">
+            <div class="container">
+                <h2 class="text-center">Contact Us</h2>
+                <p class="text-center">For bug reports and feature requests, please use the form or email address below.</p>
+                <!-- Placeholder for Contact Form -->
+                <div class="card" style="max-width: 600px; margin: 2rem auto; text-align: center;">
+                    <!-- <p>現在、お問い合わせフォームは準備中です。</p>
+                    <div id="questant-embed-1814380" data-type="0" data-width="500" data-height="600"><script type="text/javascript" src="https://questant.jp/q/e.js?q=0G5H7LE0&d=0"></script></div> -->
+                    <div style="margin-top: 1.5rem;">
+                        <a href="contact" class="btn btn-outline">Contact Us</a>
+                    </div>
+                    <p>Please contact <a href="mailto:tomato_118_22@naver.com">tomato_118_22@naver.com</a> for an emergency.</p>
+                </div>
+            </div>
+        </section>
+        <section>
+        	<div class="container">
+        		<p class="text-center">*1 Currently under development. *2 Works in Windows 10 and later operating systems. Works with macOS X Mojave or later. Works with Ubuntu or Raspberry Pi.</p>
+        	</div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p style="margin-top: 20px">Peace of mind, closer to you.</p>
+                    <img src="{{ url_for('static', filename='zndquake/logo.png') }}" alt="ZundaQuake" width="512">
+                </div>
+                <div>
+                    <h3>Link</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="about">Feature Introduction</a></li>
+                        <li><a href="dl">Download</a></li>
+                        <li><a href="faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Tomato. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

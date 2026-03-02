@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zunda Quakeについて | Zunda Quake</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='zndquake/style.css') }}">
+    <script src="{{ url_for('static', filename='zndquake/script.js') }}" defer></script>
+    <link rel="icon" href="{{ url_for('static', filename='zndquake/icon.png') }}">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="main" class="logo">
+                <!-- SVG Icon Placeholder
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12h5l3 9 4-17 3 8h5" />
+                </svg> -->
+                <img src="{{ url_for('static', filename='zndquake/icon.png') }}" alt="logo" width="64">
+                Zunda Quake
+            </a>
+            <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
+                ☰
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="main">ホーム</a></li>
+                    <li><a href="about" class="active">機能紹介</a></li>
+                    <li><a href="dl">ダウンロード</a></li>
+                    <li><a href="faq">FAQ</a></li>
+                    <li><a href="contact">お問い合わせ</a></li>
+                    <li><a class="menu-button" onclick="toggleMenu()">Language</a></li>
+                </ul>
+                <div class="menu" id="menu">
+                  <a href="about" class="menu-item">日本語</a>
+                  <a href="about_en" class="menu-item">English</a>
+                  <a href="about_zh" class="menu-item">中文(繁體)</a>
+                  <a href="about_kr" class="menu-item">한국어</a>
+                  <a href="about_es" class="menu-item">Español(Sudamerica)</a>
+                  <a href="about_ai" class="menu-item">Aynu itak(Aynumosir)</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    <main>
+        <section class="section hero" style="padding: 3rem 0; background: var(--bg-color);">
+            <div class="container text-center">
+                <h1>ZundaQuakeについて</h1>
+                <p>地震情報をより早く、より分かりやすく皆様にお届けします。</p>
+            </div>
+        </section>
+
+        <!-- Detailed Features -->
+        <section class="section">
+            <div class="container">
+                <div
+                    style="background-color: #FFF3E0; border-left: 5px solid #FF9800; padding: 1.5rem; margin-bottom: 3rem; border-radius: 4px;">
+                    <h3 style="margin-top: 0; color: #E65100;">⚠️ ベータ版のご利用について</h3>
+                    <p style="margin-bottom: 0; color: #5D4037;">
+                        現在公開しているバージョンは開発中の物となります。このページに記載されているすべての機能がご利用できるわけではありません。
+                    </p>
+                </div>
+                <h2>機能紹介</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>P波･S波到達予測</h3>
+                        <p>日本気象庁発表の緊急地震速報に基づき、現在地へのP波(初期微動)とS波(主要動)の到達予想時間をリアルタイムでカウントダウンします。</p>
+                    </div>
+                    <div class="card">
+                        <h3>詳細な震度マップ</h3>
+                        <p>震源地だけでなく、各地域の予想震度を地図上に色分けして表示。揺れの広がりを直感的に把握できます。</p>
+                    </div>
+                    <div class="card">
+                        <h3>災害情報</h3>
+                        <p>地震や津波だけでなく、火山の噴火情報や各地の気象警報も表示･お知らせ。日ごろから防災意識を高める事ができます。</p>
+                    </div>
+                    <div class="card">
+                        <h3>海外の地震情報</h3>
+                        <p>日本だけでなく、韓国、中華民国(台湾)、チリ、メキシコの地震情報も受信。世界中の地震情報を素早く取得できます。</p>
+                    </div>
+                    <div class="card">
+                        <h3>読み上げ機能</h3>
+                        <p>合成音声により、地震発生情報を音声でお知らせ。画面を見られない状況でも情報を取得できます。</p>
+                    </div>
+                    <div class="card">
+                        <h3>履歴表示</h3>
+                        <p>過去に発生した地震の履歴を確認できます。詳細なデータとともに振り返りが可能です。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Software -->
+        <section class="section" style="background-color: var(--white);">
+            <div class="container">
+                <h2>このソフトについて</h2>
+                <div style="max-width: 800px;">
+                    <h3>名前の由来</h3>
+                    <p>2011年3月11日発生の東北地方太平洋沖地震(東日本大震災)から、被災地の東北地方の郷土料理のずんだ餅から「ずんだ(Zunda)」、地震を意味する「Quake」から取られました。東日本大震災の教訓を忘れず、防災意識を高めたいという思いから名付けられました。
+                    </p>
+                    <h3>開発の背景</h3>
+                    <p>ベータ版リリース日の2026年3月11日は、東日本大震災から丁度15年という節目の日。あのような悲劇をもう繰り返さないために、ZundaQuakeは、高性能ながらも軽量で、誰でも簡単に使える事を目指して開発されました。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Team -->
+        <section class="section">
+            <div class="container">
+                <h2>開発チーム</h2>
+                <ul style="margin-top: 1rem; list-style: disc; padding-left: 1.5rem;">
+                    <li><strong>リード開発:</strong>Tomato(Office Z Development Team)</li>
+                    <li><strong>デザイン:</strong> Tomato、ChatGPT、Gemini、Claude</li>
+                    <li><strong>QA:</strong> Community Testers</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Technical Info -->
+        <section class="section" style="background-color: var(--white);">
+            <div class="container">
+                <h2>技術情報</h2>
+                <div style="display: grid; gap: 1rem; max-width: 800px;">
+                    <div>
+                        <strong>プログラミング言語:</strong> Python 3.13
+                    </div>
+                    <div>
+                        <strong>GUIフレームワーク:</strong> PyQt6
+                    </div>
+                    <div>
+                        <strong>情報元:</strong>
+                        <ul style="margin-top: 0.5rem; list-style: circle; padding-left: 1.5rem;">
+                            <li>P2P地震情報 API<sup class="ref"><a class="#ref1">※1</a><span class="ref-popup"><a href="https://www.p2pquake.net/develop/json_api_v2/">こちら</a>を参照。</span></sup></li>
+                            <!-- <li>気象庁 防災情報XML (DM-DSS)</li> -->
+                            <li>Wolfx API<sup class="ref"><a class="#ref2">※2</a><span class="ref-popup"><a href="https://wolfx.jp/apidoc">こちら</a>を参照。</span></sup></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>使用画像:</strong> MapChart<sup class="ref"><a class="#ref3">※3</a><span class="ref-popup">Japanを使用。一部加筆あり。</span></sup>
+                    </div>
+                    <div>
+                        <strong>使用音声:</strong> MuseScore4、VOICEVOX<sup class="ref"><a class="#ref4">※4</a><span class="ref-popup">日本語の音声読み上げに使用。音声ライブラリは、地震情報に東北きりたんを、緊急地震速報に東北イタコを、津波情報に東北ずん子を、その他気象情報に四国めたん、ずんだもんを使用。これらの音声ライブラリは東北地方太平洋沖地震復興支援プロジェクト「東北ずん子･ずんだもんプロジェクト」のキャラクターを基にした音源です。これらは、ZundaQuakeの理念と合致するため読み上げ音声として使用されています。詳しくは、<a href="https://zunko.jp/">こちら</a>を参照。</span></sup><!--、Typecast<sup class="ref"><a class="#ref5">※5</a><span class="ref-popup">英語、韓国語の音声読み上げに使用。音声ライブラリは、英語に を、韓国語に を使用。詳しくは、<a href="https://typecast.ai/">こちら</a>を参照。</span></sup>、A.I.VOICE<sup class="ref"><a class="#ref6">※6</a><span class="ref-popup">中国語の音声読み上げに使用。音声ライブラリは琴葉茜を使用。詳しくは、<a href="https://aivoice.jp/product/kotonohatalk_ja/">こちら</a>を参照。</span></sup>、音読さん<sup class="ref"><a class="#ref7">※7</a><span class="ref-popup">スペイン語の音声読み上げに使用。音声ライブラリは を使用。詳しくは、<a href="https://ondoku3.com/ja/">こちら</a>を参照。</span></sup>-->
+                    </div>
+                    <div>
+                        <strong>対象OS:</strong> Windows 10/11、macOS、Linux (Ubuntu/Raspberry Pi)
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p style="margin-top: 20px">安心を、もっと身近に。</p>
+                    <img src="{{ url_for('static', filename='zndquake/logo.png') }}" alt="ZundaQuake" width="512">
+                </div>
+                <div>
+                    <h3>リンク</h3>
+                    <ul>
+                        <li><a href="main">ホーム</a></li>
+                        <li><a href="about">機能紹介</a></li>
+                        <li><a href="dl">ダウンロード</a></li>
+                        <li><a href="faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Tomato. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

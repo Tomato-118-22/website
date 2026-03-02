@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="/static/logo.jpg">
+    <title>動画記事投稿 | トマト</title>
+</head>
+
+<body>
+    <div class="centre">
+        <div class="black">
+            <h1>動画記事投稿</h1>
+        </div>
+
+        <section class="contact-info mt-lg" style="max-width: 800px;">
+            <h3>新しい動画記事を投稿</h3>
+            {% if error %}
+            <p style="color: red; background-color: #fee; padding: 10px; border-radius: 5px; margin-bottom: 20px;">{{
+                error }}</p>
+            {% endif %}
+            <form method="post" enctype="multipart/form-data" style="text-align: left;">
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label for="image_data"
+                        style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500;">画像</label>
+                    <input type="file" id="image_data" name="image_data"
+                        style="padding: var(--spacing-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); width: 100%;">
+                </div>
+
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500;">
+                        動画ID</label>
+                    <input type="text" id="video_id" name="video_id" value="{{ video_id if video_id else '' }}"
+                        placeholder="000" pattern="\d{3}" title="半角数字3文字(000-999)を入力してください" required
+                        style="padding: var(--spacing-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); width: 100%; font-family: var(--font-family);">
+                </div>
+
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label for="title" style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500;">
+                        タイトル</label>
+                    <input type="text" id="title" name="title" placeholder="タイトルを入力" value="{{ title or '' }}" required
+                        style="padding: var(--spacing-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); width: 100%; font-family: var(--font-family);">
+                </div>
+
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label for="categories" style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500;">
+                        カテゴリ(最大5個)</label>
+                    <input type="text" id="categories" name="categories" value="{{ categories or '' }}"
+                        placeholder="カテゴリ1, カテゴリ2" required
+                        style="padding: var(--spacing-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); width: 100%; font-family: var(--font-family);">
+                </div>
+
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label for="tags" style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500;">
+                        タグ</label>
+                    <input type="text" id="tags" name="tags" value="{{ tags or '' }}" placeholder="タグ1, タグ2"
+                        style="padding: var(--spacing-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); width: 100%; font-family: var(--font-family);">
+                </div>
+
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label for="main_text"
+                        style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500;">本文</label>
+                    <textarea id="main_text" name="main_text" placeholder="本文を入力" rows="10" required
+                        style="padding: var(--spacing-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); width: 100%; font-family: var(--font-family); resize: vertical;">{{ main_text if main_text else '' }}</textarea>
+                </div>
+
+                <div style="text-align: center;">
+                    <button type="submit" class="btn">投稿する</button>
+                    <a href="/video" class="btn btn-outline" style="margin-left: var(--spacing-sm);">キャンセル</a>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <footer class="right">
+        <p class="black">Copylight© 2024-2026 Tomato All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

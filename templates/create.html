@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="/static/logo.jpg">
+    <title>記事作成 | トマト</title>
+</head>
+
+<body>
+    <div class="centre">
+        <div class="black">
+            <h1>記事作成</h1>
+        </div>
+
+        <section class="contact-info mt-lg" style="max-width: 800px;">
+            <h3>新しい記事を投稿</h3>
+            <form method="post" enctype="multipart/form-data" style="text-align: left;">
+                {% if error %}
+                <p style="color: #e74c3c; margin-bottom: var(--spacing-md); text-align: center; font-weight: bold;">{{
+                    error }}</p>
+                {% endif %}
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label for="image_data"
+                        style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500;">画像</label>
+                    <input type="file" id="image_data" name="image_data"
+                        style="padding: var(--spacing-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); width: 100%;">
+                </div>
+
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label for="author" style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500;">
+                        投稿者</label>
+                    <input type="text" id="author" name="author" placeholder="投稿者を入力" required
+                        style="padding: var(--spacing-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); width: 100%; font-family: var(--font-family);">
+                </div>
+
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label for="title" style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500;">
+                        タイトル</label>
+                    <input type="text" id="title" name="title" value="{{ title or '' }}" placeholder="タイトルを入力" required
+                        style="padding: var(--spacing-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); width: 100%; font-family: var(--font-family);">
+                </div>
+
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label for="categories"
+                        style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500;">
+                        カテゴリ(最大5個)</label>
+                    <input type="text" id="categories" name="categories" value="{{ categories or '' }}"
+                        placeholder="カテゴリ1, カテゴリ2" required
+                        style="padding: var(--spacing-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); width: 100%; font-family: var(--font-family);">
+                </div>
+
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label for="tags" style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500;">
+                        タグ</label>
+                    <input type="text" id="tags" name="tags" value="{{ tags or '' }}" placeholder="タグ1, タグ2"
+                        style="padding: var(--spacing-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); width: 100%; font-family: var(--font-family);">
+                </div>
+
+                <div style="margin-bottom: var(--spacing-md);">
+                    <label for="main_text"
+                        style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500;">本文</label>
+                    <textarea id="main_text" name="main_text" placeholder="本文を入力" rows="10" required
+                        style="padding: var(--spacing-sm); border: 1px solid var(--color-border); border-radius: var(--border-radius); width: 100%; font-family: var(--font-family); resize: vertical;"></textarea>
+                </div>
+
+                <div style="text-align: center;">
+                    <button type="submit" class="btn">投稿する</button>
+                    <a href="/" class="btn btn-outline" style="margin-left: var(--spacing-sm);">キャンセル</a>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <footer class="right">
+        <p class="black">Copylight© 2024-2026 Tomato All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

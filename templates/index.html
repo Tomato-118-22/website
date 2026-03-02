@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!--Copylight© Tomato All rights reserved.-->
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="動画投稿者トマトの公式ブログサイトです。動画投稿に関する情報やブログ等のコンテンツ情報を発信しています。">
+    <meta property="og:image" content="logo.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="logo.jpg">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <title>ホーム | トマト</title>
+</head>
+
+<body>
+    <div class="centre">
+        <div class="black">
+            <h1>トマト</h1>
+        </div>
+
+        <div class="white">
+            <table class="back-gray" align="center" border="0" width="800">
+                <tr>
+                    <td width="30">
+                </tr>
+                <tr>
+                    <td>
+                        <a href="/">
+                            <p>トップ</p>
+                        </a>
+                    </td>
+                    <td width="30">
+                        <a href="about">
+                            <p>プロフィール</p>
+                        </a>
+                    </td>
+                    <td width="30">
+                        <a href="contents">
+                            <p>コンテンツ一覧</p>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30">
+                        <a href="search">
+                            <p>コンテンツを探す</p>
+                        </a>
+                    </td>
+                    <td width="30">
+                        <a href="sns">
+                            <p>SNS</p>
+                        </a>
+                    </td>
+                    <td width="30">
+                        <a href="contact">
+                            <p>連絡先</p>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="30">
+                        <a href="terms">
+                            <p>利用規約</p>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="language-section">
+            <div class="language-wrapper">
+                <p class="menu-button" onclick="toggleMenu()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle;">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                    </svg>
+                    Language
+                </p>
+                <div class="menu" id="menu">
+                    <a href="../index" class="menu-item">日本語</a>
+                    <a href="../uk/index" class="menu-item">English(UK)</a>
+                    <a href="../us/index" class="menu-item">English(US)</a>
+                    <a href="../kr/index" class="menu-item">한국어(한국)</a>
+                    <a href="../kp/index" class="menu-item">문화어(조선)</a>
+                    <a href="../zh-dl/index" class="menu-item">中文(繫體)</a>
+                    <a href="../zh-tw/index" class="menu-item">中文(简体)</a>
+                    <a href="../es/index" class="menu-item">Español(España)</a>
+                    <a href="../de/index" class="menu-item">Deutsch(Deutschland)</a>
+                    <a href="../sv/index" class="menu-item">Svenska(Sverige)</a>
+                    <a href="../ai/index" class="menu-item">Aynu itak(Aynu mosir)</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero">
+            <h2>トマトとは?</h2>
+            <p>動画投稿を中心に活動しています</p>
+            <a href="about" class="btn btn-outline" style="color: white;">もっと詳しく</a>
+        </div>
+
+        <section class="mt-lg">
+            <h3>最新の記事</h3>
+            <div class="article-grid" id="latest-articles">
+            </div>
+            <div class="mt-md">
+                <a href="/articles" class="btn btn-outline">記事一覧を見る</a>
+            </div>
+        </section>
+
+        <section class="mt-lg">
+            <h3>動画紹介</h3>
+            <p class="mb-md">YouTube等のプラットフォームで様々な動画を投稿しています</p>
+            <div class="article-grid" id="latest-videos">
+                <!-- ここに最新動画が表示される -->
+            </div>
+            <div class="mt-md">
+                <a href="/video" class="btn btn-outline">動画一覧を見る</a>
+            </div>
+        </section>
+
+        <section class="contact-info mt-lg">
+            <h3>お問い合わせ</h3>
+            <p style="text-align: center;">ご質問やお問い合わせはこちらから</p>
+            <div class="mt-md">
+                <a href="contact" class="btn">連絡先を見る</a>
+            </div>
+        </section>
+    </div>
+
+    <footer class="right">
+        <p class="black">Copylight© 2024-2026 Tomato All rights reserved.</p>
+    </footer>
+
+    <script>
+        async function loadLatestArticles() {
+            try {
+                const response = await fetch('/api/articles');
+                if (!response.ok) {
+                    document.getElementById('latest-articles').innerHTML = '<p>記事はまだ投稿されていません</p>';
+                    return;
+                }
+                const articles = await response.json();
+                const latestArticles = articles.slice(-3).reverse();
+
+                if (latestArticles.length === 0) {
+                    document.getElementById('latest-articles').innerHTML = '<p>記事はまだ投稿されていません</p>';
+                    return;
+                }
+
+                const articleHTML = latestArticles.map(article => `
+                    <div class="article-card">
+                        ${article.image_name ? `<img src="/uploads/${article.image_name}" alt="${article.title}">` : ''}
+                        <div class="article-card-content">
+                            <h3>${article.title}</h3>
+                            <div class="badge-container">
+                                ${article.categories ? article.categories.map(cat => `<span class="badge badge-category" style="font-size: 0.7rem; padding: 1px 8px;">${cat}</span>`).join('') : ''}
+                            </div>
+                            <time>${article.time}</time>
+                            <p>${article.preview}...</p>
+                            <a href="/articles/${article.article_id}" class="btn">続きを読む</a>
+                        </div>
+                    </div>
+                `).join('');
+
+                document.getElementById('latest-articles').innerHTML = articleHTML;
+            } catch (error) {
+                console.error("Failed to load articles:", error);
+                document.getElementById('latest-articles').innerHTML = '<p>記事の読み込みに失敗しました</p>';
+            }
+        }
+
+        async function loadLatestVideos() {
+            try {
+                const response = await fetch('/api/videos');
+                if (!response.ok) {
+                    document.getElementById('latest-videos').innerHTML = '<p>動画はまだ投稿されていません</p>';
+                    return;
+                }
+                const videos = await response.json();
+                const latestVideos = videos.slice(-3).reverse();
+
+                if (latestVideos.length === 0) {
+                    document.getElementById('latest-videos').innerHTML = '<p>動画はまだ投稿されていません</p>';
+                    return;
+                }
+
+                const videoHTML = latestVideos.map(video => `
+                    <div class="article-card">
+                        ${video.image_name ? `<img src="/uploads/${video.image_name}" alt="${video.title}">` : ''}
+                        <div class="article-card-content">
+                            <h3>${video.title}</h3>
+                            <div class="badge-container">
+                                ${video.categories ? video.categories.map(cat => `<span class="badge badge-category" style="font-size: 0.7rem; padding: 1px 8px;">${cat}</span>`).join('') : ''}
+                            </div>
+                            <time>${video.time}</time>
+                            <p>${video.preview}...</p>
+                            <a href="/video/summary/${video.video_id}" class="btn">続きを読む</a>
+                        </div>
+                    </div>
+                `).join('');
+
+                document.getElementById('latest-videos').innerHTML = videoHTML;
+            } catch (error) {
+                console.error("Failed to load videos:", error);
+                document.getElementById('latest-videos').innerHTML = '<p>動画の読み込みに失敗しました</p>';
+            }
+        }
+
+        if (window.location.protocol !== 'file:') {
+            loadLatestArticles();
+            loadLatestVideos();
+        } else {
+            document.getElementById('latest-articles').innerHTML = '<p style="color: var(--color-text-light); text-align: center;">サーバーを起動すると記事が表示されます</p>';
+            document.getElementById('latest-videos').innerHTML = '<p style="color: var(--color-text-light); text-align: center;">サーバーを起動すると動画が表示されます</p>';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="/static/logo.jpg">
+    <title>{{ article['title'] }} | トマト</title>
+</head>
+
+<body>
+    <div class="centre">
+        <div class="black">
+            <h1>トマト</h1>
+        </div>
+
+        <nav style="margin: var(--spacing-md) 0; display: flex; justify-content: space-between; align-items: center;">
+            <a href="/" class="btn btn-outline">
+                < トップに戻る</a>
+                    {% if session.get('authenticated') %}
+                    <div style="display: flex; gap: var(--spacing-sm);">
+                        <a href="/edit/{{ article['article_id'] }}" class="btn btn-outline"
+                            style="padding: 4px 12px; font-size: 0.9em;">編集</a>
+                        <form action="/delete/{{ article['article_id'] }}" method="post" style="display: inline;"
+                            onsubmit="return confirm('本当に削除しますか?');">
+                            <button type="submit" class="btn btn-outline"
+                                style="padding: 4px 12px; font-size: 0.9em; border-color: #e74c3c; color: #e74c3c;">削除</button>
+                        </form>
+                    </div>
+                    {% endif %}
+        </nav>
+
+        <article class="contact-info mt-lg" style="max-width: 900px; text-align: left;">
+            {% if article['image_name'] %}
+            <img src="/uploads/{{ article['image_name'] }}" alt="{{ article['title'] }}"
+                style="width: 100%; max-height: 500px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: var(--spacing-md);">
+            {% endif %}
+
+            <h2>{{ article['title'] }}</h2>
+
+            <div class="badge-container">
+                {% if article['categories'] %}
+                {% for cat in article['categories'] %}
+                <span class="badge badge-category">{{ cat }}</span>
+                {% endfor %}
+                {% endif %}
+                {% if article['tags'] %}
+                {% for tag in article['tags'] %}
+                <span class="badge badge-tag">#{{ tag }}</span>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <div
+                style="color: var(--color-text-light); margin-bottom: var(--spacing-md); padding-bottom: var(--spacing-sm); border-bottom: 1px solid var(--color-border);">
+                <span>著者: {{ article['author'] }}</span>
+                <span style="margin-left: var(--spacing-md);">作成日時: {{ article['time'] }}</span>
+                {% if article['updated_time'] %}
+                <span style="margin-left: var(--spacing-sm); font-size: 0.9em;">編集日時: {{ article['updated_time']
+                    }}</span>
+                {% endif %}
+            </div>
+
+            <div class="markdown-content">{{ article['main_text_html'] | safe }}</div>
+        </article>
+        <nav style="margin: var(--spacing-md) 0; justify-content: space-between; text-align: center;">
+            <a href="/articles" class="btn btn-outline">記事一覧を見る</a>
+        </nav>
+    </div>
+
+    <footer class="right">
+        <p class="black">Copylight© 2024-2026 Tomato All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

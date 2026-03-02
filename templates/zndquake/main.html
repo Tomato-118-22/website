@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zunda Quake - 迅速かつ正確な地震･津波情報受信ソフトウェア。シンプルでモダンなインターフェースで防災をサポートします。">
+    <title>Zunda Quake | 地震・津波情報受信ソフトウェア</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='zndquake/style.css') }}">
+    <script src="{{ url_for('static', filename='zndquake/script.js') }}" defer></script>
+    <link rel="icon" href="{{ url_for('static', filename='zndquake/icon.png') }}">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <!-- SVG Icon Placeholder
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12h5l3 9 4-17 3 8h5" />
+                </svg> -->
+                <img src="{{ url_for('static', filename='zndquake/icon.png') }}" alt="logo" width="64">
+                Zunda Quake
+            </a>
+            <button class="menu-toggle" aria-label="メニューを開く" aria-expanded="false">
+                ☰
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">ホーム</a></li>
+                    <li><a href="about">機能紹介</a></li>
+                    <li><a href="dl">ダウンロード</a></li>
+                    <li><a href="faq">FAQ</a></li>
+                    <li><a href="contact">お問い合わせ</a></li>
+                    <li><a class="menu-button" onclick="toggleMenu()">Language</a></li>
+                </ul>
+                <div class="menu" id="menu">
+                  <a href="#" class="menu-item">日本語</a>
+                  <a href="main_en" class="menu-item">English</a>
+                  <a href="main_zh" class="menu-item">中文(繁體)</a>
+                  <a href="main_kr" class="menu-item">한국어</a>
+                  <a href="main_es" class="menu-item">Español(Sudamerica)</a>
+                  <a href="main_ai" class="menu-item">Aynu itak(Aynumosir)</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>揺れを可視化する、<br>新しい防災体験。</h1>
+                <p>「Zunda Quake」は、日本、世界<sup>※1</sup>の地震・津波をはじめとした防災情報をリアルタイムで受信し、画面に表示･音声でお知らせするソフトウェアです。</p>
+                <a href="dl" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    無料ダウンロード(ベータ版)
+                </a>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="text-center">お知らせ</h2>
+                <div class="news-list">
+                    <article class="news-item">
+                        <span class="news-date">2026.03.11</span>
+                        <span class="news-content">ウェブサイトを公開しました。</span>
+                    </article>
+                    <article class="news-item">
+                        <span class="news-date">2026.03.11</span>
+                        <span class="news-content">Zunda Quake β1.0.0 をリリースしました。</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section (Simplified) -->
+        <section class="section" style="background-color: var(--white);">
+            <div class="container">
+                <h2 class="text-center">主な機能</h2>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>リアルタイム通知</h3>
+                        <p>緊急地震速報や津波情報をほぼ遅延なく受け取り、即座に画面に表示、音声でお知らせします。</p>
+                    </div>
+                    <div class="card">
+                        <h3>モダンなUI</h3>
+                        <p>見やすさを追求した緑基調のシンプルなデザイン。暗所でも目に優しい配色です。</p>
+                    </div>
+                    <div class="card">
+                        <h3>マルチプラットフォーム</h3>
+                        <p>Windows、Mac、Linux<sup>※2</sup>に対応。お使いの環境を選ばずに動作します。</p>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 2rem;">
+                    <a href="about" class="btn btn-outline">機能詳細を見る &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Teaser -->
+        <section class="section">
+            <div class="container text-center">
+                <h2>よくある質問</h2>
+                <p>使い方がわからない、動かないといったトラブルはありませんか?</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="faq" class="btn btn-outline">確認する</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section" style="background-color: var(--white);">
+            <div class="container">
+                <h2 class="text-center">お問い合わせ</h2>
+                <p class="text-center">バグ報告や機能要望は、以下のフォームまたはメールアドレスからお寄せください。</p>
+                <!-- Placeholder for Contact Form -->
+                <div class="card" style="max-width: 600px; margin: 2rem auto; text-align: center;">
+                    <!-- <p>現在、お問い合わせフォームは準備中です。</p>
+                    <div id="questant-embed-1814380" data-type="0" data-width="500" data-height="600"><script type="text/javascript" src="https://questant.jp/q/e.js?q=0G5H7LE0&d=0"></script></div> -->
+                    <div style="margin-top: 1.5rem;">
+                        <a href="contact" class="btn btn-outline">問い合わせる</a>
+                    </div>
+                    <p>緊急のご連絡は <a href="mailto:tomato_118_22@naver.com">tomato_118_22@naver.com</a> までお願いいたします。</p>
+                </div>
+            </div>
+        </section>
+        <section>
+        	<div class="container">
+        		<p class="text-center">※1 現在開発中。 ※2 Windows10以降のOSで動作。 macOS X Mojave以降で動作。 Ubuntu、Raspberry Piで動作。</p>
+        	</div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p style="margin-top: 20px">安心を、もっと身近に。</p>
+                    <img src="{{ url_for('static', filename='zndquake/logo.png') }}" alt="ZundaQuake" width="512">
+                </div>
+                <div>
+                    <h3>リンク</h3>
+                    <ul>
+                        <li><a href="#">ホーム</a></li>
+                        <li><a href="about">機能紹介</a></li>
+                        <li><a href="dl">ダウンロード</a></li>
+                        <li><a href="faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Tomato. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
