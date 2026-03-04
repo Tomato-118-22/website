@@ -236,6 +236,10 @@ def zndquake_zh_hanzi_map_t2s():
 def zndquake_zh_hanzi_map_s2t():
     return render_template("zndquake/hanzi_map_s2t.json")'''
 
+@zndquake_bp.route("/update.json")
+def zndquake_update():
+    return render_template("zndquake/update.json")
+
 app.register_blueprint(zndquake_bp, url_prefix="/officez/products/zndquake")
 
 # Search Routes
