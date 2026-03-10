@@ -204,6 +204,10 @@ def zndquake_contact():
 def zndquake_discord():
     return render_template("zndquake/discord.html")
 
+@zndquake_bp.route("/linux_dl")
+def zndquake_linux_dl():
+    return render_template("zndquake/linux_dl.html")
+
 @zndquake_bp.route("/main_zh")
 def zndquake_main_zh():
     return render_template("zndquake/main_zh.html")
@@ -251,6 +255,34 @@ def zndquake_winzip2():
 @zndquake_bp.route("/ZundaQuake4Windows.zip.003")
 def zndquake_winzip3():
     return send_file("files/ZundaQuake4Windows.zip.003")
+
+@zndquake_bp.route("/zundaquakeinstaller_beta1.0.0.dmg")
+def zndquake_macinstaller():
+    return send_file("files/zundaquakeinstaller_beta1.0.0.dmg")
+
+@zndquake_bp.route("/ZundaQuake4Mac.zip.001")
+def zndquake_maczip1():
+    return send_file("files/ZundaQuake4Mac.zip.001")
+
+@zndquake_bp.route("/ZundaQuake4Mac.zip.002")
+def zndquake_maczip2():
+    return send_file("files/ZundaQuake4Mac.zip.002")
+
+@zndquake_bp.route("/ZundaQuake4Mac.zip.003")
+def zndquake_maczip3():
+    return send_file("files/ZundaQuake4Mac.zip.003")
+
+@zndquake_bp.route("/ZundaQuake4Mac.zip.004")
+def zndquake_maczip4():
+    return send_file("files/ZundaQuake4Mac.zip.004")
+
+@zndquake_bp.route("/ZundaQuake_Linux_x86_64_vBeta1.0.0.7z.001")
+def zndquake_linuxzip1():
+    return send_file("files/ZundaQuake_Linux_x86_64_vBeta1.0.0.7z.001")
+
+@zndquake_bp.route("/ZundaQuake_Linux_x86_64_vBeta1.0.0.7z.002")
+def zndquake_linuxzip2():
+    return send_file("files/ZundaQuake_Linux_x86_64_vBeta1.0.0.7z.002")
 
 @zndquake_bp.route("/update.json")
 def zndquake_update():
