@@ -79,6 +79,53 @@ def password_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+
+def kosshori_pass(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'authenticated' not in session:
+            error = None
+            if request.method == 'POST':
+                password = request.form.get('password')
+                if password == Kosshori1919:
+                    session['authenticated'] = True
+                    return redirect(request.url)
+                else:
+                    error = 'パスワードが違います'
+            
+            return f'''
+                <!DOCTYPE html>
+                <html lang="ja">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <link rel="stylesheet" href="/static/style.css">
+                    <title>ログイン | トマト</title>
+                </head>
+                <body>
+                    <div class="centre">
+                        <div class="black"><h1>トマト</h1></div>
+                        <section class="contact-info mt-lg" style="max-width: 500px;">
+                            <h3>ここからはアクセス権のあるユーザーのみがアクセスできます。パスワードを入力してください。</h3>
+                            <form method="post" style="text-align: left; margin-top: var(--spacing-md);">
+                                <input type="password" name="password" placeholder="パスワード" required 
+                                       style="padding: var(--spacing-sm); border: 1px solid var(--color-border); 
+                                              border-radius: var(--border-radius); width: 100%; font-family: var(--font-family); 
+                                              margin-bottom: var(--spacing-md);">
+                                {f'<p style="color: #e74c3c; margin-bottom: var(--spacing-md); text-align: center; font-weight: bold;">{error}</p>' if error else ''}
+                                <button type="submit" class="btn" style="width: 100%;">ログイン</button>
+                            </form>
+                            <p style="margin-top: var(--spacing-md); text-align: center;">
+                                <a href="/">トップに戻る</a>
+                            </p>
+                        </section>
+                    </div>
+                </body>
+                </html>
+                '''
+        return f(*args, **kwargs)
+    return decorated_function
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 UK_DIR = os.path.join(BASE_DIR, 'en-UK')
 US_DIR = os.path.join(BASE_DIR, 'en-US')
@@ -277,18 +324,36 @@ def zndquake_maczip4():
     return send_file("files/ZundaQuake4Mac.zip.004")
 
 @zndquake_bp.route("/ZundaQuake_Linux_x86_64_vBeta1.0.0.7z.001")
-def zndquake_linuxzip1():
+def zndquake_linux64zip1():
     return send_file("files/ZundaQuake_Linux_x86_64_vBeta1.0.0.7z.001")
 
 @zndquake_bp.route("/ZundaQuake_Linux_x86_64_vBeta1.0.0.7z.002")
-def zndquake_linuxzip2():
+def zndquake_linux64zip2():
     return send_file("files/ZundaQuake_Linux_x86_64_vBeta1.0.0.7z.002")
+
+@zndquake_bp.route("/ZundaQuake_Linux_arm_64_vBeta1.0.0.7z.001")
+def zndquake_arm64zip1():
+    return send_file("files/ZundaQuake_Linux_arm_64_vBeta1.0.0.7z.001")
+
+@zndquake_bp.route("/ZundaQuake_Linux_arm_64_vBeta1.0.0.7z.002")
+def zndquake_arm64zip2():
+    return send_file("files/ZundaQuake_Linux_arm_64_vBeta1.0.0.7z.002")
 
 @zndquake_bp.route("/update.json")
 def zndquake_update():
     return render_template("zndquake/update.json")
 
 app.register_blueprint(zndquake_bp, url_prefix="/officez/products/zndquake")
+
+# ｺｯｼｮﾘルートへ接続
+kosshori_bp = Blueprint("kosshori", __name__)
+
+@kosshori_bp.route("/")
+@kosshori_pass
+def kosshori_main():
+    return render_template("kosshori/index.html")
+
+app.register_blueprint(kosshori_bp, url_prefix="/officez/products/kosshori")
 
 # Search Routes
 @app.route('/search')
